@@ -75,18 +75,21 @@ namespace TypedTree.Generator.Editor.Ui
                             !a.FullName.StartsWith("nunit", StringComparison.InvariantCultureIgnoreCase);
                     }).
                     SelectMany(a =>
-                        a.GetTypes().Where(t =>
+                    {
+                        try
                         {
-                            try
+                            return a.GetTypes().Where(t =>
                             {
                                 return
                                     t.GetCustomAttributes(typeof(CompilerGeneratedAttribute), false).Count() == 0 &&
                                     !t.FullName.StartsWith("<PrivateImplementationDetails>", StringComparison.InvariantCultureIgnoreCase);
-                            }
-                            catch { }
-                            return false;
-                        })
-                    ).
+                            });
+                        }
+                        catch
+                        {
+                            return Array.Empty<Type>();
+                        }
+                    }).
                     Where(t => t.IsClass || (t.IsValueType && !t.IsPrimitive) || t.IsInterface).
                     Select(t => t.FullName);
             }
