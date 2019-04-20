@@ -24,11 +24,11 @@ then
 fi
 
 # Remove existing libraries.
-rm -rf "$EXAMPLE_DIR/lib"
+rm -rf "$EXAMPLE_DIR/Assets/lib"
 
 # Copy the libraries over.
-ensureDir "$EXAMPLE_DIR/lib"
-cp -f "$LIBRARY_DIR"/*.dll "$EXAMPLE_DIR/lib"
+ensureDir "$EXAMPLE_DIR/Assets/lib"
+cp -f "$LIBRARY_DIR"/*.dll "$EXAMPLE_DIR/Assets/lib"
 
 info "Copied libraries to example"
 exit 0
