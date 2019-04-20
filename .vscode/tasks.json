@@ -5,7 +5,7 @@
   "tasks": [
     {
       "label": "update-dependencies",
-      "command": "./ci/update-dependencies.sh",
+      "command": "./.ci/update-dependencies.sh",
       "type": "shell",
       "problemMatcher": []
     }

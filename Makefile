@@ -6,4 +6,4 @@ default: update-dependencies
 # --------------------------------------------------------------------------------------------------
 
 update-dependencies:
-	./ci/update-dependencies.sh
+	./.ci/update-dependencies.sh

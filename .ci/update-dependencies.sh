@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-source ./ci/utils.sh
+source ./.ci/utils.sh
 
 # --------------------------------------------------------------------------------------------------
 # Utility to download the latest NuGet dependencies.
