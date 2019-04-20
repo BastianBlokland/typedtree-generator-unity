@@ -8,3 +8,8 @@
 # Temp output
 .bin/
 .obj/
+
+# Example
+.example/Library/
+.example/Logs/
+.example/Temp/
