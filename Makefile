@@ -1,4 +1,4 @@
-.PHONY: update-dependencies
+.PHONY: update-dependencies example-edit
 default: update-dependencies
 
 # --------------------------------------------------------------------------------------------------
@@ -8,3 +8,6 @@ default: update-dependencies
 update-dependencies:
 	./.ci/update-dependencies.sh
 	./.ci/example-copylib.sh
+
+example-edit:
+	./.ci/example-edit.sh
