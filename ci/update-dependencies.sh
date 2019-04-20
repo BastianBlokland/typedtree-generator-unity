@@ -15,34 +15,41 @@ verifyCommand nuget
 verifyCommand cp
 verifyCommand mkdir
 verifyCommand rm
+verifyCommand basename
 
 info "Fetching nuget packages"
 withRetry nuget install "$NUGET_PACKAGE" -OutputDirectory "$NUGET_DIR"
 
 saveDll ()
 {
-    info "Processing dll: $1"
+    local dllPath="$1"
+    local packageName="$2"
+    info "Processing dll: $dllPath for package: $packageName"
     ensureDir "$LIBRARY_DIR"
-    cp -f "$1" "$LIBRARY_DIR"
+    cp -f "$dllPath" "$LIBRARY_DIR"
 }
 
 processPackage ()
 {
-    info "Processing package: $1"
+    local packageName="$(basename $1)"
+    info "Processing package: $packageName"
+
     local netstandard2Dir="$1/lib/netstandard2.0/"
     if [ ! -d "$netstandard2Dir" ]
     then
-        fail "No 'netstandard2.0' library found for package: $1"
+        fail "No 'netstandard2.0' library found for package: $packageName"
     fi
 
+    echo "$packageName" >> "$LIBRARY_DIR/manifest.txt"
     for dllPath in "$netstandard2Dir"*.dll
     do
-        saveDll "$dllPath"
+        saveDll "$dllPath" "$packageName"
     done
 }
 
 # Clear output.
 rm -rf "$LIBRARY_DIR"
+ensureDir "$LIBRARY_DIR"
 
 # Extract all netstandard2.0 dll's from the packages.
 for packageDir in "$NUGET_DIR"/*
