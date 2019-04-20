@@ -8,7 +8,7 @@ source ./ci/utils.sh
 
 NUGET_PACKAGE="TypedTree.Generator.Core"
 NUGET_DIR=".nuget"
-LIBRARY_DIR="lib"
+LIBRARY_DIR=".lib"
 
 # Verify that commands we depend on are present.
 verifyCommand nuget
