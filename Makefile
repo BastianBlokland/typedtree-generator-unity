@@ -7,3 +7,4 @@ default: update-dependencies
 
 update-dependencies:
 	./.ci/update-dependencies.sh
+	./.ci/example-copylib.sh
