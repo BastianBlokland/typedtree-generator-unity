@@ -6,7 +6,7 @@ Unity package tool for generating treescheme files for use in the [**TypedTree-e
 To avoid having to handwrite treescheme files you can generated them based on the c# class
 structure of your tree (for example a behaviour tree structure).
 
-The scheme files produced be be used to edit tree's in a visual way using the [**website**](https://bastian.tech.tree).
+The scheme files produced be be used to edit tree's in a visual way using the [**website**](https://bastian.tech/tree).
 
 ## Installation
 TODO write here
