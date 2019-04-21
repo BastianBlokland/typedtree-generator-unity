@@ -1,0 +1,36 @@
+{
+  "$type": "Example.TurretBrain.Selector",
+  "children": [
+    {
+      "$type": "Example.TurretBrain.Sequence",
+      "children": [
+        {
+          "$type": "Example.TurretBrain.AcquireTarget",
+          "range": 30,
+          "mode": 1,
+          "preferOldTarget": true
+        },
+        {
+          "$type": "Example.TurretBrain.AimAtTarget",
+          "maxAngle": 1
+        },
+        {
+          "$type": "Example.TurretBrain.Fire",
+          "shots": 3
+        }
+      ]
+    },
+    {
+      "$type": "Example.TurretBrain.Sequence",
+      "children": [
+        {
+          "$type": "Example.TurretBrain.WaitForIdle",
+          "minIdleTime": 1
+        },
+        {
+          "$type": "Example.TurretBrain.Sleep"
+        }
+      ]
+    }
+  ]
+}

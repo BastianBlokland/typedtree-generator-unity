@@ -1,0 +1,102 @@
+{
+  "rootAlias": "Example.TurretBrain.INode",
+  "aliases": [
+    {
+      "identifier": "Example.TurretBrain.INode",
+      "values": [
+        "Example.TurretBrain.AcquireTarget",
+        "Example.TurretBrain.AimAtTarget",
+        "Example.TurretBrain.Fire",
+        "Example.TurretBrain.Selector",
+        "Example.TurretBrain.Sequence",
+        "Example.TurretBrain.Sleep",
+        "Example.TurretBrain.WaitForIdle"
+      ]
+    }
+  ],
+  "enums": [
+    {
+      "identifier": "Example.TurretBrain.AcquireTarget+Mode",
+      "values": [
+        {
+          "value": 1,
+          "name": "Closest"
+        },
+        {
+          "value": 2,
+          "name": "Random"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "nodeType": "Example.TurretBrain.AcquireTarget",
+      "fields": [
+        {
+          "name": "range",
+          "valueType": "number"
+        },
+        {
+          "name": "mode",
+          "valueType": "Example.TurretBrain.AcquireTarget+Mode"
+        },
+        {
+          "name": "preferOldTarget",
+          "valueType": "boolean"
+        }
+      ]
+    },
+    {
+      "nodeType": "Example.TurretBrain.AimAtTarget",
+      "fields": [
+        {
+          "name": "maxAngle",
+          "valueType": "number"
+        }
+      ]
+    },
+    {
+      "nodeType": "Example.TurretBrain.Fire",
+      "fields": [
+        {
+          "name": "shots",
+          "valueType": "number"
+        }
+      ]
+    },
+    {
+      "nodeType": "Example.TurretBrain.Selector",
+      "fields": [
+        {
+          "name": "children",
+          "valueType": "Example.TurretBrain.INode",
+          "isArray": true
+        }
+      ]
+    },
+    {
+      "nodeType": "Example.TurretBrain.Sequence",
+      "fields": [
+        {
+          "name": "children",
+          "valueType": "Example.TurretBrain.INode",
+          "isArray": true
+        }
+      ]
+    },
+    {
+      "nodeType": "Example.TurretBrain.Sleep",
+      "fields": []
+    },
+    {
+      "nodeType": "Example.TurretBrain.WaitForIdle",
+      "fields": [
+        {
+          "name": "minIdleTime",
+          "valueType": "number"
+        }
+      ]
+    }
+  ]
+}

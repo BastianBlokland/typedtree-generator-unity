@@ -13,3 +13,6 @@
 .example/Library/
 .example/Logs/
 .example/Temp/
+.example/obj/
+.example/*.csproj
+.example/*.sln

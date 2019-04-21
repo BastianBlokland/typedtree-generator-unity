@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<linker>
+    <!--
+    Tell the stripper about types that we do not reference directly but we still want included
+    in the output (for example because they are instantiated through reflection).
+    -->
+
+    <!-- Fully include our own assembly -->
+    <assembly fullname="Assembly-CSharp" preserve="all"/>
+
+    <!-- Parts of the 'System' assembly that we need -->
+    <assembly fullname="System">
+
+        <!-- Required by: 'Netwonsoft.Json' -->
+        <type fullname="System.ComponentModel.ReferenceConverter">
+            <method signature="System.Void .ctor(System.Type)" />
+        </type>
+
+    </assembly>
+
+    <!-- Parts of the 'System.Core' assembly that we need -->
+    <assembly fullname="System.Core">
+
+        <!-- Required by: 'Netwonsoft.Json' -->
+        <type fullname="System.Linq.Expressions.Interpreter.LightLambda" preserve="all" />
+
+    </assembly>
+
+</linker>
