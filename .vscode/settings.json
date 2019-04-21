@@ -4,10 +4,12 @@
     "mscorlib",
     "nunit",
     "precompiled",
+    "scriptable",
+    "struct",
     "treescheme",
     "turretbrain",
     "typedtree"
-],
+  ],
   // Search settings
   "search.useIgnoreFiles": false,
   "search.exclude": {
