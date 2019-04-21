@@ -8,7 +8,7 @@ Tested to work fine on:
 * Android
 * WebGL
 
-*NOTE: The behaviour-tree classes in this example are purely as an example, the library doesn't place any restrictions on how you structure your tree.*
+*NOTE: The behaviour-tree classes are purely as an example, the library doesn't place any restrictions on how you structure your tree.*
 
 The json in `data/turretbrain.treescheme.json` can be loaded in the [**TypedTree Editor**](https://bastian.tech/tree)
 
