@@ -17,6 +17,11 @@ verifyCommand mkdir
 verifyCommand rm
 verifyCommand basename
 
+# Clear output.
+rm -rf "$NUGET_DIR"
+rm -rf "$LIBRARY_DIR"
+ensureDir "$LIBRARY_DIR"
+
 info "Fetching nuget packages"
 withRetry nuget install "$NUGET_PACKAGE" -OutputDirectory "$NUGET_DIR"
 
@@ -46,10 +51,6 @@ processPackage ()
         saveDll "$dllPath" "$packageName"
     done
 }
-
-# Clear output.
-rm -rf "$LIBRARY_DIR"
-ensureDir "$LIBRARY_DIR"
 
 # Extract all netstandard2.0 dll's from the packages.
 for packageDir in "$NUGET_DIR"/*
