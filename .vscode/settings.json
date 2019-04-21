@@ -4,6 +4,8 @@
     "mscorlib",
     "nunit",
     "precompiled",
+    "treescheme",
+    "turretbrain",
     "typedtree"
 ],
   // Search settings
