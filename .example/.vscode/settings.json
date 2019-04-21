@@ -1,13 +1,9 @@
 {
   // Common plugins
   "cSpell.words": [
-    "mscorlib",
-    "nunit",
-    "precompiled",
-    "treescheme",
-    "turretbrain",
-    "typedtree"
-],
+    "nowarn",
+    "warnaserror"
+  ],
   // Search settings
   "search.useIgnoreFiles": false,
   "search.exclude": {
@@ -20,6 +16,11 @@
   // Ignore some directories to keep the directory viewer clean
   "files.exclude": {
     ".nuget": true,
+    "Library": true,
+    "Logs": true,
+    "Temp": true,
+    "*.csproj": true,
+    "*.sln": true,
     "**/*.meta": true,
     "**/.git": true,
     "**/bin": true,
