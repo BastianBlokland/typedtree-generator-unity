@@ -42,7 +42,7 @@ namespace TypedTree.Generator.Editor.Ui
             {
                 int selected = Array.IndexOf(typeNames, property.stringValue);
                 int newSelection = UnityEditor.EditorGUI.Popup(dropdownRect, label.text, selected, typePaths);
-                property.stringValue = newSelection <= 0 ? string.Empty : typeNames[newSelection];
+                property.stringValue = newSelection < 0 ? string.Empty : typeNames[newSelection];
             }
 
             // Draw button to refresh the types.
