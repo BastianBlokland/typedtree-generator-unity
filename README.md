@@ -34,4 +34,5 @@ An example of how to integrate this package with unity project can be found in t
 
 ## Help
 More information about the generator library: [**typedtree-generator-dotnet**](https://github.com/BastianBlokland/typedtree-generator-dotnet)
+
 More information about the editor: [**typedtree-editor**](https://github.com/BastianBlokland/typedtree-editor)
