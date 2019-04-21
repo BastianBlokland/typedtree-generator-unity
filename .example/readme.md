@@ -1,4 +1,4 @@
-﻿# **TypedTree-Generator** Example.
+# **TypedTree-Generator** Example.
 
 Simple example showing turret-ai implemented using a [**Behaviour tree**](https://en.wikipedia.org/wiki/Behavior_tree)
 
@@ -7,6 +7,8 @@ Tested to work fine on:
 * iOS
 * Android
 * WebGL
+
+View the WebGL example running [**here**](https://bastian.tech/unity/typedtree-generator-example/).
 
 *NOTE: The behaviour-tree classes are purely as an example, the library doesn't place any restrictions on how you structure your tree.*
 
