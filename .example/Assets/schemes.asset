@@ -16,6 +16,11 @@ MonoBehaviour:
   - rootAliasType: Example.TurretBrain.INode
     fieldSource: 2
     typeIgnorePattern: 
+    comments:
+    - nodeType: Example.TurretBrain.Selector
+      comment: Execute children until a child returns 'Running' or 'Success'.
+    - nodeType: Example.TurretBrain.Sequence
+      comment: Execute children until a child returns 'Failure'.
     autoGenerate: 1
     outputPath: data/turretbrain.treescheme.json
     verboseLogging: 0

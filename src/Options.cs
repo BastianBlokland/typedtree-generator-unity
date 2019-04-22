@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using System.Text.RegularExpressions;
 
@@ -14,7 +15,7 @@ namespace TypedTree.Generator.Editor
     [Serializable]
     public sealed class Options
     {
-        #pragma warning disable CS0649
+#pragma warning disable CS0649
         [Header("Mapping settings")]
         [Tooltip("Fullname of the type to use as the root of the tree")]
         [TypeNamePicker]
@@ -26,6 +27,9 @@ namespace TypedTree.Generator.Editor
         [Tooltip("Optional regex pattern to ignore types")]
         [SerializeField] private string typeIgnorePattern;
 
+        [Tooltip("Comments to add to nodes")]
+        [SerializeField] private NodeComment[] comments;
+
         [Header("Output")]
         [Tooltip("Auto-generate the scheme on recompile")]
         [SerializeField] private bool autoGenerate = true;
@@ -36,7 +40,7 @@ namespace TypedTree.Generator.Editor
         [Header("Diagnostics")]
         [Tooltip("Should verbose diagnostic logging be enabled during the mapping")]
         [SerializeField] private bool verboseLogging;
-        #pragma warning restore CS0649
+#pragma warning restore CS0649
 
         /// <summary>
         /// Fullname of the type to use as the root of the tree.
@@ -70,6 +74,11 @@ namespace TypedTree.Generator.Editor
                 return null;
             }
         }
+
+        /// <summary>
+        /// Comments to add to nodes.
+        /// </summary>
+        public IEnumerable<NodeComment> Comments => this.comments;
 
         /// <summary>
         /// Should the scheme be auto generated on recompile.

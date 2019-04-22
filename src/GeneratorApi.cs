@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Linq;
 using System.IO;
 using System.Text.RegularExpressions;
 using Microsoft.Extensions.Logging;
 
 using TypedTree.Generator.Core.Mapping;
+using TypedTree.Generator.Core.Mapping.NodeComments;
 using TypedTree.Generator.Core.Serialization;
 using TypedTree.Generator.Core.Utilities;
 
@@ -24,6 +26,7 @@ namespace TypedTree.Generator.Editor
             if (options == null)
                 throw new ArgumentNullException(nameof(options));
 
+            // Create logger.
             var logger = new UnityLogger(options.VerboseLogging, logContext);
             if (string.IsNullOrEmpty(options.RootAliasTypeName))
             {
@@ -31,11 +34,28 @@ namespace TypedTree.Generator.Editor
                 return;
             }
 
+            // Add manually entered comments.
+            INodeCommentProvider nodeCommentProvider = null;
+            if (options.Comments != null)
+            {
+                try
+                {
+                    nodeCommentProvider = new ManualNodeCommentProvider(
+                        options.Comments.ToDictionary(nc => nc.NodeType, nc => nc.Comment));
+                }
+                catch
+                {
+                    logger.LogWarning("Failed to add comments, does it contain a duplicate type?");
+                }
+            }
+
+            // Generate.
             GenerateSchemeToFile(
                 options.RootAliasTypeName,
                 options.FieldSource,
                 options.OutputPath,
                 options.TypeIgnorePattern,
+                nodeCommentProvider,
                 logger);
         }
 
@@ -46,16 +66,19 @@ namespace TypedTree.Generator.Editor
         /// <param name="fieldSource">Enum to indicator how to find fields on types</param>
         /// <param name="outputPath">Path to save the output file relative to the Assets directory</param>
         /// <param name="typeIgnorePattern">Optional regex pattern to ignore types</param>
+        /// <param name="nodeCommentProvider">Optional provider of node-comments</param>
         /// <param name="logger">Optional logger for diagnostic output</param>
         public static void GenerateSchemeToFile(
             string rootAliasTypeName,
             FieldSource fieldSource,
             string outputPath,
             Regex typeIgnorePattern = null,
+            INodeCommentProvider nodeCommentProvider = null,
             ILogger logger = null)
         {
             // Generate the json.
-            var json = GenerateScheme(rootAliasTypeName, fieldSource, typeIgnorePattern, logger);
+            var json = GenerateScheme(
+                rootAliasTypeName, fieldSource, typeIgnorePattern, nodeCommentProvider, logger);
             if (json != null)
             {
                 // Write the file.
@@ -85,12 +108,14 @@ namespace TypedTree.Generator.Editor
         /// <param name="rootAliasTypeName">Fullname of the type to use as the root of the tree</param>
         /// <param name="fieldSource">Enum to indicator how to find fields on types</param>
         /// <param name="typeIgnorePattern">Optional regex pattern to ignore types</param>
+        /// <param name="nodeCommentProvider">Optional provider of node-comments</param>
         /// <param name="logger">Optional logger for diagnostic output</param>
         /// <returns>Json string representing the scheme</returns>
         public static string GenerateScheme(
             string rootAliasTypeName,
             FieldSource fieldSource,
             Regex typeIgnorePattern = null,
+            INodeCommentProvider nodeCommentProvider = null,
             ILogger logger = null)
         {
             try
@@ -99,7 +124,12 @@ namespace TypedTree.Generator.Editor
                 var typeCollection = TypeCollection.Create(AppDomain.CurrentDomain.GetAssemblies(), logger);
 
                 // Create mapping context.
-                var context = Context.Create(typeCollection, fieldSource, typeIgnorePattern, logger);
+                var context = Context.Create(
+                    typeCollection,
+                    fieldSource,
+                    typeIgnorePattern,
+                    nodeCommentProvider,
+                    logger);
 
                 // Map the tree.
                 var tree = TreeMapper.MapTree(context, rootAliasTypeName);

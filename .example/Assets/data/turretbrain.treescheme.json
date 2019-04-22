@@ -67,6 +67,7 @@
     },
     {
       "nodeType": "Example.TurretBrain.Selector",
+      "comment": "Execute children until a child returns 'Running' or 'Success'.",
       "fields": [
         {
           "name": "children",
@@ -77,6 +78,7 @@
     },
     {
       "nodeType": "Example.TurretBrain.Sequence",
+      "comment": "Execute children until a child returns 'Failure'.",
       "fields": [
         {
           "name": "children",
