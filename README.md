@@ -13,7 +13,7 @@ The scheme files produced can be used to edit tree's in a visual way using the [
 
     ```
     "dependencies": {
-        "com.typedtree.generator": "https://github.com/BastianBlokland/typedtree-generator-unity.git",
+        "com.typedtree.generator": "https://github.com/BastianBlokland/typedtree-generator-unity.git#v1.1",
         ...
     }
     ```
