@@ -2,7 +2,6 @@
 using System.Linq;
 using System.IO;
 using System.Text.RegularExpressions;
-using Microsoft.Extensions.Logging;
 
 using TypedTree.Generator.Core.Mapping;
 using TypedTree.Generator.Core.Mapping.NodeComments;
@@ -74,7 +73,7 @@ namespace TypedTree.Generator.Editor
             string outputPath,
             Regex typeIgnorePattern = null,
             INodeCommentProvider nodeCommentProvider = null,
-            ILogger logger = null)
+            Core.ILogger logger = null)
         {
             // Generate the json.
             var json = GenerateScheme(
@@ -116,7 +115,7 @@ namespace TypedTree.Generator.Editor
             FieldSource fieldSource,
             Regex typeIgnorePattern = null,
             INodeCommentProvider nodeCommentProvider = null,
-            ILogger logger = null)
+            Core.ILogger logger = null)
         {
             try
             {
