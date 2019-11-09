@@ -2,7 +2,7 @@
   "name": "com.typedtree.generator",
   "displayName": "TypedTree Generator",
   "author": "Bastian Blokland",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "unity": "2018.4",
   "description": "Tool for generating scheme files for the typedtree-editor. Repository: https://github.com/bastianblokland/typedtree-generator-unity",
   "keywords": [
