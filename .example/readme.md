@@ -8,7 +8,7 @@ Tested to work fine on:
 * Android
 * WebGL
 
-View the WebGL example running [**here**](https://bastian.tech/unity/typedtree-generator-example/).
+View the WebGL example running [**here**](https://www.bastian.tech/unity/typedtree-generator-example/).
 
 *NOTE: The behaviour-tree classes are purely as an example, the library doesn't place any restrictions on how you structure your tree.*
 
